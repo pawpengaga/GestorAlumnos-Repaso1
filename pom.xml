@@ -7,8 +7,8 @@
 
   <!-- La nueva version de Java es la 23 -->
   <properties>
-    <maven.compiler.source>23</maven.compiler.source>
-    <maven.compiler.target>23</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -51,33 +51,33 @@
     </dependency>
      
     <!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
-    <!-- <dependency>
+    <dependency>
         <groupId>jakarta.servlet.jsp.jstl</groupId>
         <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
         <version>3.0.2</version>
-    </dependency> -->
+    </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp.jstl -->
-    <!-- <dependency>
+    <dependency>
       <groupId>org.glassfish.web</groupId>
       <artifactId>jakarta.servlet.jsp.jstl</artifactId>
       <version>3.0.1</version>
-    </dependency> -->
+    </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-    <!-- <dependency>
+    <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.7.4</version>
-    </dependency> -->
+    </dependency>
 
     <!-- Para los .env -->
     <!-- https://mvnrepository.com/artifact/io.github.cdimascio/dotenv-java -->
-    <!-- <dependency>
+    <dependency>
       <groupId>io.github.cdimascio</groupId>
       <artifactId>dotenv-java</artifactId>
       <version>3.0.2</version>
-    </dependency> -->
+    </dependency>
 
 
   </dependencies>
