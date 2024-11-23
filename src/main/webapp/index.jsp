@@ -7,7 +7,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>Password: <c:out value="${password}" /></p>
-	<p>Name: ${name}</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Curso</th>
+                <th>Promedio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="alumno" items="${alumnos}">
+                <tr>
+                    <td>${alumno.id}</td>
+                    <td>${alumno.nombre}</td>
+                    <td>${alumno.curso}</td>
+                    <td>${alumno.promedio}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </body>
 </html>

@@ -6,8 +6,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
-import io.github.cdimascio.dotenv.Dotenv;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Servlet implementation class MainServlet
@@ -16,7 +20,6 @@ import io.github.cdimascio.dotenv.Dotenv;
 public class MainServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-		Dotenv dotenv = Dotenv.configure().directory("C:\\Users\\Erick Rivera\\Desktop\\java-traini\\MODULO 5\\REPASO 1\\GestorAlumnos\\").filename("my.env").load();
        
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -31,8 +34,38 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Se paso por aqui...");
-		request.setAttribute("password", dotenv.get("SUPABASE_NAME"));
-		request.setAttribute("name", "eee");
+		
+		System.out.println("Se paso por aqui...");
+
+		/* INICIO METODO GETALUMNOS */
+		
+		// Vamos a generar una lista de alumnos aqui nomas
+		List<Alumno> alumnos = new ArrayList<>();
+		String sql = "SELECT * FROM alumnos";
+		
+		try {
+			// Connection cnx = PoolConexiones.getDataSource().getConnection();
+			Connection cnx = ConexionDB.getConnect();
+			Statement stmt = cnx.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				alumnos.add(new Alumno(rs.getInt("id"), rs.getString("nombre"), rs.getString("curso"), rs.getDouble("promedio")));
+			}
+			rs.close();
+			stmt.close();
+
+			for (Alumno alumno : alumnos) {
+				System.out.println(alumno);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		/* FIN METODO GETALUMNOS */
+
+		request.setAttribute("alumnos", alumnos);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

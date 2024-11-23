@@ -1,2 +1,4 @@
 .env
 var.env
+
+/resources/var.env

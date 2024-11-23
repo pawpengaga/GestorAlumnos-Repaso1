@@ -2,7 +2,7 @@
 
 Un clon de la pruena del modulo 4 del curso, ahora funcionando en la web con postgresql!
 
-#### Problemas identificados:
+#### Avances
 
-- JSTL no funciona
-- Variables de entorno no funcionan
+- JSTL funciona por medio de libreria local
+- Variables de entorno para proteger clave de Supabase funciona
